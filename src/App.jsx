@@ -56,4 +56,5 @@ function App() {
 
 export default App;
 // 31-daqiqadan koraver
+// bugun tugatish kk
 // terminalda cd "greenshop-b" deb ochsa boladi
