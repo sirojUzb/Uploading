@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Button, Form, Input, Upload, Card } from "antd";
+import { Button, Card, Modal } from "antd";
 // import { PlusOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 function App() {
   const [flowers, setFlowers] = useState([]);
+  const [open, setOpen] = useState(false);
   // const onSubmit = (values) => {
   //   console.log(values);
   // };
@@ -21,53 +22,38 @@ function App() {
   }, []);
   return (
     <div className="flex justify-center items-center flex-col">
-      {/* <Form
-        onFinish={onSubmit}
-        layout="horizontal"
-        style={{
-          maxWidth: 600,
+      <Modal
+        okText="create"
+        onOk={() => {
+          setOpen(false);
         }}
+        open={open}
+        onCancel={() => setOpen(false)}
+        title="Add flower"
       >
-        <Form.Item
-          label="Title"
-          name="title"
-          rules={[{ required: true, message: "Please input" }]}
-        >
-          <Input placeholder="Enter title" name="title" />
-        </Form.Item>
-        <Form.Item
-          label="Upload"
-          name="main_img"
-          rules={[{ required: true, message: "Please upload image" }]}
-        >
-          <Upload
-            name="image"
-            action="http://localhost:8080/api/upload?access_token=64bebc1e2c6d3f056a8c85b7"
+        123
+      </Modal>
+      <div className="absolute top-2 right-2">
+        <Button onClick={() => setOpen(true)}>Add</Button>
+      </div>
+      <div className="flex flex-col gap-[20px] mt-[20px]">
+        {flowers.map(({ _id, main_image, title, short_description }) => (
+          <Card
+            key={_id}
+            hoverable
+            style={{
+              width: 439,
+            }}
+            cover={<img alt="example" src={main_image} />}
           >
-            <Button>Upload</Button>
-          </Upload>
-        </Form.Item>
-        <Form.Item>
-          <Button htmlType="submit">Submit</Button>
-        </Form.Item>
-      </Form> */}
-
-      {flowers.map(({ _id, main_image }) => (
-        <Card
-          key={_id}
-          hoverable
-          style={{
-            width: 240,
-          }}
-          cover={<img alt="example" src={main_image} />}
-        >
-          <Meta title="Europe Street beat" description="www.instagram.com" />
-        </Card>
-      ))}
+            <Meta title={title} description={short_description} />
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default App;
-// 26-daqiqadan koraver
+// 31-daqiqadan koraver
 // terminalda cd "greenshop-b" deb ochsa boladi
