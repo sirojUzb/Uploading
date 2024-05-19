@@ -1,18 +1,43 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Form, Input, InputNumber, Modal, Upload } from "antd";
-// import { PlusOutlined } from "@ant-design/icons";
 
 const { Meta } = Card;
 function App() {
   const [flowers, setFlowers] = useState([]);
   const [open, setOpen] = useState(false);
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
+    console.log("Received values from form", values);
     console.log(values);
     const shouldUpload = {
       title: values.title,
       price: values.price,
       main_image: values.main_image.file.response.image_url.url,
+      discount_price: "0",
+      detailed_images: [
+        "https://www.coartsinnovation.com/wp-content/uploads/2021/05/Artificial-Topiary-CAJM-7136.png",
+        "https://www.coartsinnovation.com/wp-content/uploads/2021/05/Artificial-Topiary-CAJM-7136.png",
+        "https://cdn11.bigcommerce.com/s-2mpfm/images/stencil/640w/products/169512/743847/5965__41958.1630728740.jpg?c=2",
+        "https://cdn11.bigcommerce.com/s-2mpfm/images/stencil/640w/products/169089/743279/5493__27309.1630683935.jpg?c=2",
+      ],
+      rate: 0,
+      views: 0,
+      tags: [],
+      comments: [],
+      description: "Description",
+      short_description: "Short description",
     };
+    await fetch(
+      "http://localhost:8080/api/flower/category/potter-plants?access_token=64bebc1e2c6d3f056a8c85b7",
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0YzAyZDEwMzIwNjk5ODJkYmJhOTRlZiIsIm5hbWUiOiJUZXN0Iiwic3VybmFtZSI6IlRlc3RvdiIsInBhc3N3b3JkIjoidGVzdF90ZXN0IiwicGVybWlzc2lvbiI6eyJjcmVhdGUiOmZhbHNlLCJ1cGRhdGUiOmZhbHNlLCJkZWxldGUiOmZhbHNlLCJyZWFkIjp0cnVlfSwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfdHlwZSI6Im9ic2VydmVyIiwiY3JlYXRlX3Bvc3RfbGltaXQiOjAsImNyZWF0ZV9hY2NvdW50X2xpbWl0IjowLCJjcmVhdGVfcGxhbnRfbGltaXQiOjAsImhhc2h0YWdzIjpbXSwid2lzaGxpc3QiOltdLCJjcmVhdGVkX2F0IjoiMjAyMy0wNy0yNVQyMDoxNDowOC4wNDhaIiwiX192IjowfSwiaWF0IjoxNjkwMzE2MjY3fQ.Lwf1q47UoD5eUzFp4IXjgCD05xvnDrojZ5lST9mrMfc",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(shouldUpload),
+      }
+    );
     setOpen(false);
   };
   useEffect(() => {
@@ -97,5 +122,5 @@ function App() {
 
 export default App;
 // 2-videodan koraver
-// bugun tugatish kk
+// dushanba tugatish kk
 // terminalda cd "greenshop-b" deb ochsa boladi
