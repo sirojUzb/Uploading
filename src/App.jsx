@@ -24,7 +24,7 @@ function App() {
       tags: [],
       comments: [],
       description: "Description",
-      short_description: "Short description",
+      short_description: "Short_description",
     };
     await fetch(
       "http://localhost:8080/api/flower/category/potter-plants?access_token=64bebc1e2c6d3f056a8c85b7",
@@ -33,7 +33,7 @@ function App() {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0YzAyZDEwMzIwNjk5ODJkYmJhOTRlZiIsIm5hbWUiOiJUZXN0Iiwic3VybmFtZSI6IlRlc3RvdiIsInBhc3N3b3JkIjoidGVzdF90ZXN0IiwicGVybWlzc2lvbiI6eyJjcmVhdGUiOmZhbHNlLCJ1cGRhdGUiOmZhbHNlLCJkZWxldGUiOmZhbHNlLCJyZWFkIjp0cnVlfSwiZW1haWwiOiJ0ZXN0QGdtYWlsLmNvbSIsInVzZXJfdHlwZSI6Im9ic2VydmVyIiwiY3JlYXRlX3Bvc3RfbGltaXQiOjAsImNyZWF0ZV9hY2NvdW50X2xpbWl0IjowLCJjcmVhdGVfcGxhbnRfbGltaXQiOjAsImhhc2h0YWdzIjpbXSwid2lzaGxpc3QiOltdLCJjcmVhdGVkX2F0IjoiMjAyMy0wNy0yNVQyMDoxNDowOC4wNDhaIiwiX192IjowfSwiaWF0IjoxNjkwMzE2MjY3fQ.Lwf1q47UoD5eUzFp4IXjgCD05xvnDrojZ5lST9mrMfc",
-          "Content-Type": "application/json",
+          "Content-type": "application/json",
         },
         body: JSON.stringify(shouldUpload),
       }
@@ -73,7 +73,12 @@ function App() {
           <Form.Item
             label="Upload"
             name="main_image"
-            rules={[{ required: true, message: "Please upload your image" }]}
+            rules={[
+              {
+                required: true,
+                message: "Please input your price",
+              },
+            ]}
           >
             <Upload
               action={
@@ -87,7 +92,12 @@ function App() {
           <Form.Item
             label="Price"
             name="price"
-            rules={[{ required: true, message: "Please input your price" }]}
+            rules={[
+              {
+                required: true,
+                message: "Please input your price",
+              },
+            ]}
           >
             <InputNumber />
           </Form.Item>
