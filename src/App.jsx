@@ -12,6 +12,7 @@ function App() {
       title: values.title,
       price: values.price,
       main_image: values.main_image.file.response.image_url.url,
+      discount: false,
       discount_price: "0",
       detailed_images: [
         "https://www.coartsinnovation.com/wp-content/uploads/2021/05/Artificial-Topiary-CAJM-7136.png",
@@ -76,7 +77,7 @@ function App() {
             rules={[
               {
                 required: true,
-                message: "Please input your price",
+                message: "Please input your image",
               },
             ]}
           >
