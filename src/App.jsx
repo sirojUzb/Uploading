@@ -132,6 +132,5 @@ function App() {
 }
 
 export default App;
-// 2-videodan koraver
-// dushanba tugatish kk
+// finish hometask
 // terminalda cd "greenshop-b" deb ochsa boladi
