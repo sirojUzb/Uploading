@@ -134,3 +134,4 @@ function App() {
 export default App;
 // finish hometask
 // terminalda cd "greenshop-b" deb ochsa boladi
+// finish LESSON 12
